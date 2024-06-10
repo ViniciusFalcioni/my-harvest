@@ -23,11 +23,11 @@ const Header = () => {
             </ul>
           </div>
           <div className='button flex'>
-            <h4>
+            {/* <h4>
               <span>2</span> My List
-            </h4>
+            </h4> */}
             <button className='btn1'>
-              <i className='fa fa-sign-out'></i> Sign In
+              <i className='fa fa-sign-out'></i> Entrar
             </button>
           </div>
 

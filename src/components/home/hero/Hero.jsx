@@ -11,16 +11,16 @@ const Hero = () => {
 
           <form className='flex'>
             <div className='box'>
-              <span>City/Street</span>
-              <input type='text' placeholder='Location' />
+              <span>Cidade</span>
+              <input type='text' placeholder='Cidade' />
             </div>
             <div className='box'>
-              <span>Property Type</span>
-              <input type='text' placeholder='Property Type' />
+              <span>Categoria</span>
+              <input type='text' placeholder='Categoria' />
             </div>
             <div className='box'>
-              <span>Price Range</span>
-              <input type='text' placeholder='Price Range' />
+              <span>Preço</span>
+              <input type='text' placeholder='Preço' />
             </div>
             <div className='box'>
               <h4>Advance Filter</h4>

@@ -1,0 +1,66 @@
+.button-group {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.button-group button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  background-color: #5cb85c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button-group button.selected {
+  background-color: #4cae4c;
+}
+
+.button-group button:not(.selected):hover {
+  background-color: #4cae4c;
+}
+
+.contact form div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.contact textarea, .contact input {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+.contact form {
+  padding: 30px;
+}
+
+.contact button {
+  padding: 10px 20px;
+  background-color: #5cb85c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact button:hover {
+  background-color: #4cae4c;
+}
+
+@media screen and (max-width: 768px) {
+  .contact h4 {
+      width: 100%;
+      margin-bottom: 30px;
+  }
+  .contact form div {
+      flex-direction: column;
+  }
+}
