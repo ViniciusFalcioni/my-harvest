@@ -11,11 +11,12 @@
 }
 .hero h1 {
   color: #fff;
-  font-size: 60px;
+  font-size: 50px;
+  text-shadow: 1px 1px #000000ba;
 }
 .hero p {
   color: #fff;
-  opacity: 0.8;
+  text-shadow: 1px 1px #000000ba;
 }
 form {
   background-color: #fff;

@@ -9,10 +9,10 @@ const Footer = () => {
         <div className='container'>
           <div className='send flex'>
             <div className='text'>
-              <h1>Do You Have Questions ?</h1>
-              <p>We'll help you to grow your career and growth.</p>
+              <h1>Você tem dúvidas?</h1>
+              <p>Vamos ajudar você a crescer seu negócio.</p>
             </div>
-            <button className='btn5'>Contact Us Today</button>
+            <button className='btn5'>Entre em contato</button>
           </div>
         </div>
       </section>

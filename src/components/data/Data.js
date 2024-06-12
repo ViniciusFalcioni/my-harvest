@@ -13,7 +13,7 @@ export const nav = [
   },
   {
     text: "Meus Anúncios",
-    path: "/blog",
+    path: "/meus-anuncios",
   },
   {
     text: "Anunciar",
@@ -55,58 +55,133 @@ export const list = [
   {
     id: 1,
     cover: "../images/list/p-1.png",
-    name: "Red Carpet Real Estate",
-    location: "210 Zirak Road, Canada",
-    category: "For Rent",
-    price: "$3,700",
-    type: "Apartment",
+    images: [
+      "../images/list/p-1.png",
+      "../images/list/p-1-1.png",
+      "../images/list/p-1-2.png"
+    ],
+    name: "Fazenda Bela Vista",
+    location: "Rodovia BR-163, Mato Grosso",
+    latitude: -12.9714,
+    longitude: -55.7224,
+    category: "Arrendar",
+    price: "R$ 3.700,00",
+    type: "Terra",
+    title: "Grande Fazenda para Arrendar",
+    description: "Fazenda espaçosa ideal para plantio de soja e milho. Possui infraestrutura completa.",
+    brand: "",
+    model: "",
+    year: ""
   },
   {
     id: 2,
     cover: "../images/list/p-2.png",
-    name: "Fairmount Properties",
-    location: "5698 Zirak Road, NewYork",
-    category: "For Sale",
-    price: "$9,750",
-    type: "Condos",
+    images: [
+      "../images/list/p-2.png",
+      "../images/list/p-2-1.png",
+      "../images/list/p-2-2.png"
+    ],
+    name: "Trator John Deere",
+    location: "Av. das Indústrias, São Paulo",
+    latitude: -23.5505,
+    longitude: -46.6333,
+    category: "Venda",
+    price: "R$ 9.750,00",
+    type: "Maquinário",
+    title: "Trator John Deere 2020",
+    description: "Trator em excelente estado, pronto para uso agrícola. Ótima potência e desempenho.",
+    brand: "John Deere",
+    model: "XUV865M",
+    year: "2020"
   },
   {
     id: 3,
     cover: "../images/list/p-7.png",
-    name: "The Real Estate Corner",
-    location: "5624 Mooker Market, USA",
-    category: "For Rent",
-    price: "$5,860",
-    type: "Offices",
+    images: [
+      "../images/list/p-7.png",
+      "../images/list/p-7-1.png",
+      "../images/list/p-7-2.png"
+    ],
+    name: "Colheitadeira Case",
+    location: "Rodovia BR-364, Goiás",
+    latitude: -16.6869,
+    longitude: -49.2648,
+    category: "Venda",
+    price: "R$ 5.860,00",
+    type: "Maquinário",
+    title: "Colheitadeira Case IH",
+    description: "Colheitadeira com alta eficiência para colheita de grãos. Baixa manutenção e alta durabilidade.",
+    brand: "Case",
+    model: "Axial-Flow 9250",
+    year: "2018"
   },
   {
     id: 4,
     cover: "../images/list/p-4.png",
-    name: "Herringbone Realty",
-    location: "5621 Liverpool, London",
-    category: "For Sale",
-    price: "$7,540",
-    type: "Homes & Villas",
+    images: [
+      "../images/list/p-4.png",
+      "../images/list/p-4-1.png",
+      "../images/list/p-4-2.png"
+    ],
+    name: "Terreno Agrícola",
+    location: "Estrada Vicinal, Minas Gerais",
+    latitude: -19.9167,
+    longitude: -43.9345,
+    category: "Venda",
+    price: "R$ 7.540,00",
+    type: "Terra",
+    title: "Terreno Agrícola à Venda",
+    description: "Terreno fértil, ideal para cultivo de café e outras culturas. Água em abundância e boa localização.",
+    brand: "",
+    model: "",
+    year: ""
   },
   {
     id: 5,
     cover: "../images/list/p-5.png",
-    name: "Brick Lane Realty",
-    location: "210 Montreal Road, Canada",
-    category: "For Rent",
-    price: "$4,850",
-    type: "Commercial",
+    images: [
+      "../images/list/p-5.png",
+      "../images/list/p-5-1.png",
+      "../images/list/p-5-2.png"
+    ],
+    name: "Plantadeira Stara",
+    location: "Rodovia BR-285, Rio Grande do Sul",
+    latitude: -29.6867,
+    longitude: -53.8145,
+    category: "Arrendar",
+    price: "R$ 4.850,00",
+    type: "Maquinário",
+    title: "Plantadeira Stara 2017",
+    description: "Plantadeira eficiente, com alta precisão no plantio. Excelente estado de conservação.",
+    brand: "Stara",
+    model: "Estrela 32",
+    year: "2017"
   },
   {
     id: 6,
     cover: "../images/list/p-6.png",
-    name: "Banyon Tree Realty",
-    location: "210 Zirak Road, Canada",
-    category: "For Sale",
-    price: "$2,742",
-    type: "Apartment",
-  },
+    images: [
+      "../images/list/p-6.png",
+      "../images/list/p-6-1.png",
+      "../images/list/p-6-2.png"
+    ],
+    name: "Fazenda Santo Antônio",
+    location: "Rodovia BR-116, Bahia",
+    latitude: -12.9714,
+    longitude: -38.5014,
+    category: "Venda",
+    price: "R$ 2.742,00",
+    type: "Terra",
+    title: "Fazenda à Venda na Bahia",
+    description: "Fazenda produtiva, com áreas de pastagem e cultivo. Boa infraestrutura e acesso facilitado.",
+    brand: "",
+    model: "",
+    year: ""
+  }
 ]
+
+
+
 export const awards = [
   {
     icon: <i class='fa-solid fa-trophy'></i>,
