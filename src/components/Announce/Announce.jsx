@@ -10,6 +10,12 @@ const Announce = () => {
     setCategory(selectedCategory);
   };
 
+  const getCategoryID = () => {
+    if (category === "machinery") return 1; // ID para Máquinas Agrícolas
+    if (category === "land") return 2; // ID para Terras
+    return null;
+  };
+
   return (
     <>
       <section className="contact mb">
@@ -42,6 +48,7 @@ const Announce = () => {
               <textarea placeholder="Descrição detalhada do anúncio" cols="30" rows="10" required></textarea>
               <input type="number" placeholder="Preço em R$" required />
               <input type="text" placeholder="Localização do anúncio" required />
+              <input type="hidden" value={getCategoryID()} />
               {category === "machinery" && (
                 <>
                   <select required>
