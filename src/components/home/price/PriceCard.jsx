@@ -24,8 +24,8 @@ const PriceCard = () => {
                   <li>
                     <label
                       style={{
-                        background: change === "color" ? "#dc35451f" : "#27ae601f",
-                        color: change === "color" ? "#dc3848" : "#27ae60",
+                        background: change === "color" ? "#dc35451f" : "#2E8B571f",
+                        color: change === "color" ? "#dc3848" : "#2E8B57",
                       }}
                     >
                       {icon}
@@ -38,8 +38,8 @@ const PriceCard = () => {
             <button
               className='btn5'
               style={{
-                background: item.plan === "Standard" ? "#27ae60" : "#fff",
-                color: item.plan === "Standard" ? "#fff" : "#27ae60",
+                background: item.plan === "Standard" ? "#2E8B57" : "#fff",
+                color: item.plan === "Standard" ? "#fff" : "#2E8B57",
               }}
             >
               Start {item.plan}

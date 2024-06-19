@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import img from "../images/pricing.jpg";
-import Back from "../common/Back";
-import SuccessPopup from "../Popups/SuccessPopup";
-import FailedPopup from "../Popups/FailedPopup";
-import "./Announce.css";
+import { useParams, useHistory } from "react-router-dom";
+import img from "../../images/pricing.jpg";
+import Back from "../../common/Back";
+import SuccessPopup from "../../Popups/SuccessPopup";
+import FailedPopup from "../../Popups/FailedPopup";
+import "../Announce.css";
 
-const Announce = () => {
+const EditAd = () => {
+  const { id } = useParams();
+  const history = useHistory();
   const [category, setCategory] = useState("");
   const [showSuccess, setShowSuccess] = useState(false);
   const [showFailed, setShowFailed] = useState(false);
@@ -26,10 +29,33 @@ const Announce = () => {
     irrigation: ""
   });
 
-  const handleCategorySelection = (selectedCategory) => {
-    setCategory(selectedCategory);
-    setFormData({ ...formData, category: selectedCategory });
-  };
+  useEffect(() => {
+    axios.get(`http://localhost:3001/api/advertisements/${id}`)
+      .then(response => {
+        const ad = response.data;
+        setCategory(ad.category_id === 1 ? "machinery" : "land");
+        setFormData({
+          title: ad.title || "",
+          description: ad.description || "",
+          price: ad.price || "",
+          location: ad.location || "",
+          category: ad.category || "",
+          machine_type: ad.machineryDetails?.machine_type || "",
+          brand: ad.machineryDetails?.brand || "",
+          model: ad.machineryDetails?.model || "",
+          year: ad.machineryDetails?.year || "",
+          land_size: ad.landDetails?.land_size || "",
+          land_size_type: ad.landDetails?.land_size_type || "",
+          soil_type: ad.landDetails?.soil_type || "",
+          irrigation: ad.landDetails?.irrigation || ""
+        });
+      })
+      .catch(error => {
+        console.error("Erro ao buscar anúncio:", error);
+        setShowFailed(true);
+      });
+  }, [id]);
+
 
   const getCategoryID = () => {
     if (category === "machinery") return 1; // ID para Máquinas Agrícolas
@@ -41,37 +67,20 @@ const Announce = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const resetForm = () => {
-    setFormData({
-      title: "",
-      description: "",
-      price: "",
-      location: "",
-      category: "",
-      machine_type: "",
-      brand: "",
-      model: "",
-      year: "",
-      land_size: "",
-      land_size_type: "",
-      soil_type: "",
-      irrigation: ""
-    });
-    setCategory("");
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const categoryID = getCategoryID();
     const data = { ...formData, category_id: categoryID };
 
     try {
-      const response = await axios.post("http://localhost:3001/api/advertisements", data);
-      console.log("Anúncio cadastrado com sucesso:", response.data);
+      await axios.put(`http://localhost:3001/api/advertisements/${id}`, data);
       setShowSuccess(true);
-      resetForm(); // Limpar o formulário após a submissão bem-sucedida
+      setTimeout(() => {
+        setShowSuccess(false);
+        history.push("/meus-anuncios");
+      }, 1000);
     } catch (error) {
-      console.error("Erro ao cadastrar anúncio:", error);
+      console.error("Erro ao atualizar anúncio:", error);
       setShowFailed(true);
     }
   };
@@ -79,28 +88,9 @@ const Announce = () => {
   return (
     <>
       <section className="contact mb">
-        <Back name="Cadastrar Anúncio" title="Escolha o Tipo de Anúncio" cover={img} />
+        <Back name="Editar Anúncio" title="Atualize as Informações do Anúncio" cover={img} />
         <div className="container">
-          <div className="card-group">
-            <div
-              className={`card ${category === "machinery" ? "selected" : ""}`}
-              onClick={() => handleCategorySelection("machinery")}
-              style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/cadastro/cadastrar-maquina.jpg)` }}
-            >
-              <div className="overlay">
-                <button>Cadastrar Maquinário</button>
-              </div>
-            </div>
-            <div
-              className={`card ${category === "land" ? "selected" : ""}`}
-              onClick={() => handleCategorySelection("land")}
-              style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/cadastro/cadastrar-terra.jpg)` }}
-            >
-              <div className="overlay">
-                <button>Cadastrar Terra</button>
-              </div>
-            </div>
-          </div>
+         
           {category !== "" && (
             <form className="shadow" onSubmit={handleSubmit}>
               <h4>Preencha as Informações</h4> <br />
@@ -141,15 +131,15 @@ const Announce = () => {
                 </>
               )}
               <input type="file" multiple />
-              <button type="submit">Cadastrar Anúncio</button>
+              <button type="submit">Atualizar Anúncio</button>
             </form>
           )}
-          {showSuccess && <SuccessPopup message="Anúncio cadastrado com sucesso!" onClose={() => setShowSuccess(false)} />}
-          {showFailed && <FailedPopup message="Erro ao cadastrar anúncio!" onClose={() => setShowFailed(false)} />}
+          {showSuccess && <SuccessPopup message="Anúncio atualizado com sucesso!" onClose={() => setShowSuccess(false)} />}
+          {showFailed && <FailedPopup message="Erro ao atualizar anúncio!" onClose={() => setShowFailed(false)} />}
         </div>
       </section>
     </>
   );
 };
 
-export default Announce;
+export default EditAd;

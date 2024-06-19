@@ -10,6 +10,7 @@ import Services from "../services/Services"
 import Contact from "../contact/Contact"
 import Announce from "../Announce/Announce"
 import AdDetailsPage from "../AdDetailsPage/AdDetailsPage"
+import EditAd from "../Announce/EditAd/EditAd"
 
 const Pages = () => {
   return (
@@ -25,6 +26,7 @@ const Pages = () => {
           <Route exact path='/contact' component={Contact} />
           <Route exact path='/anunciar' component={Announce} />
           <Route exact path='/anuncio/:id' component={AdDetailsPage} />
+          <Route exact path='/editar-anuncio/:id' component={EditAd} />
         </Switch>
         <Footer />
       </Router>

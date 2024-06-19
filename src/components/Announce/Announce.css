@@ -40,7 +40,7 @@
 }
 
 .contact .card .overlay button {
-  background-color: #27ae60;
+  background-color: #2E8B57;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -48,7 +48,7 @@
 }
 
 .contact .card .overlay button:hover {
-  background-color: #0056b3;
+  background-color: #8FBC8F;
 }
 
 .contact form {
@@ -81,7 +81,7 @@
 }
 
 .contact button[type="submit"] {
-  background-color: #27ae60;
+  background-color: #2E8B57;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -91,7 +91,7 @@
 }
 
 .contact button[type="submit"]:hover {
-  background-color: #0056b3;
+  background-color: #8FBC8F;
 }
 
 @media screen and (max-width: 768px) {
