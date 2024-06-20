@@ -8,8 +8,8 @@ const Price = () => {
     <>
       <section className='price padding'>
         <div className='container'>
-          <Heading title='Select Your Package' subtitle='At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores' />
-          <PriceCard />
+        <Heading title='Escolha seu Plano' subtitle='Escolha o plano ideal para você e tenha acesso às melhores ofertas de terras e máquinas agrícolas. Aproveite nossas opções personalizadas para atender às suas necessidades.' />
+        <PriceCard />
         </div>
       </section>
     </>
