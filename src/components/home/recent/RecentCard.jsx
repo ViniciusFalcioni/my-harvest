@@ -88,10 +88,7 @@ const RecentCard = () => {
     }
   ]
 
-  const handleDelete = (id) => {
-    // Simular exclusão de anúncio
-    console.log(`Anúncio com ID ${id} excluído.`)
-  }
+
 
   return (
     <>
