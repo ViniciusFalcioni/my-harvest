@@ -12,7 +12,7 @@ const PriceCard = () => {
             </div>
             <h3>{item.plan}</h3>
             <h1>
-              <span>$</span>
+              <span>R$</span>
               {item.price}
             </h1>
             <p>{item.ptext}</p>
@@ -42,7 +42,7 @@ const PriceCard = () => {
                 color: item.plan === "Standard" ? "#fff" : "#2E8B57",
               }}
             >
-              Start {item.plan}
+              {item.plan}
             </button>
           </div>
         ))}

@@ -8,14 +8,12 @@ const About = () => {
   return (
     <>
       <section className='about'>
-        <Back name='About Us' title='About Us - Who We Are?' cover={img} />
+        <Back name='Sobre nos' title='Conheça a Nossa História e Missão' cover={img} />
         <div className='container flex mtop'>
           <div className='left row'>
-            <Heading title='Our Agency Story' subtitle='Check out our company story and work process' />
+            <Heading title='Sobre nos' subtitle='Conheça a Nossa História e Missão' />
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-            <button className='btn2'>More About Us</button>
+            <p>O My Harvest é uma plataforma dedicada a conectar o setor agrícola em todo o país. Facilitamos o acesso a oportunidades de trabalho, aluguel de máquinas agrícolas e áreas disponíveis para arrendamento. Nossa missão é impulsionar o crescimento da agricultura brasileira, oferecendo soluções acessíveis e eficientes para produtores, trabalhadores e investidores do campo. Acreditamos que, quando nos unimos, o campo prospera e todos colhemos melhores resultados.</p>
           </div>
           <div className='right row'>
             <img src='./immio.jpg' alt='' />

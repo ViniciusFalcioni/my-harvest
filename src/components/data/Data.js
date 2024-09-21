@@ -27,28 +27,23 @@ export const nav = [
 export const featured = [
   {
     cover: "../images/hero/h1.png",
-    name: "Family House",
-    total: "122 Property",
+    name: "Terras para venda",
+    total: "122 Anúncios",
   },
   {
     cover: "../images/hero/h2.png",
-    name: "House & Villa",
-    total: "155 Property",
+    name: "Terras para arrendar",
+    total: "155 Anúncios",
   },
   {
     cover: "../images/hero/h3.png",
-    name: "Apartment",
-    total: "300 Property",
+    name: "Maquinarios para venda",
+    total: "300 Anúncios",
   },
   {
     cover: "../images/hero/h4.png",
-    name: "Office & Studio",
-    total: "80 Property",
-  },
-  {
-    cover: "../images/hero/h6.png",
-    name: "Villa & Condo",
-    total: "80 Property",
+    name: "Maquinarios para Alugar",
+    total: "80 Anúncios",
   },
 ]
 export const list = [
@@ -207,187 +202,214 @@ export const awards = [
 export const location = [
   {
     id: 1,
-    name: "New Orleans, Louisiana",
-    Villas: "12 Villas",
-    Apartments: "10 Apartments",
-    Offices: "07 Offices",
-    cover: "./images/location/city-1.png",
+    name: "Mato Grosso",
+    Villas: "15 Fazendas",
+    Apartments: "5 Silos",
+    Offices: "10 Escritórios Agrícolas",
+    cover: "https://fecomerciomt.org.br/wp-content/uploads/2023/09/BANNER_Turismo-de-Mato-Grosso-e-destaque-durante-maior-feira-de-turismo-da-America-Latina.jpg",
   },
   {
     id: 2,
-    name: "Jerrsy, United State",
-    Villas: "12 Villas",
-    Apartments: "10 Apartments",
-    Offices: "07 Offices",
-    cover: "./images/location/city-2.png",
+    name: "Paraná",
+    Villas: "20 Fazendas",
+    Apartments: "8 Silos",
+    Offices: "12 Escritórios Agrícolas",
+    cover: "https://imagens-cdn.canalrural.com.br/2023/09/cidades-ranking-Parana-scaled.jpg",
   },
   {
     id: 3,
-    name: "Liverpool, London",
-    Villas: "12 Villas",
-    Apartments: " 10 Apartments",
-    Offices: "07 Offices",
-    cover: "./images/location/city-3.png",
+    name: "Goiás",
+    Villas: "18 Fazendas",
+    Apartments: "7 Silos",
+    Offices: "9 Escritórios Agrícolas",
+    cover: "https://goias.gov.br/agricultura/wp-content/uploads/sites/50/2023/03/Fotos_Semad_e_Prefeitura_de_Ouro_verde_02-178.jpeg",
   },
   {
     id: 4,
-    name: "NewYork, United States",
-    Villas: "12 Villas",
-    Apartments: " 10 Apartments",
-    Offices: "07 Offices",
-    cover: "./images/location/city-4.png",
+    name: "São Paulo",
+    Villas: "25 Fazendas",
+    Apartments: "10 Silos",
+    Offices: "15 Escritórios Agrícolas",
+    cover: "https://gestaourbana.prefeitura.sp.gov.br/wp-content/uploads/2016/07/Luciana-Travassos_zonarural_rgb-900x420.jpg",
   },
   {
     id: 5,
-    name: "Montreal, Canada",
-    Villas: "12 Villas",
-    Apartments: " 10 Apartments",
-    Offices: "07 Offices",
-    cover: "./images/location/city-5.png",
+    name: "Minas Gerais",
+    Villas: "22 Fazendas",
+    Apartments: "6 Silos",
+    Offices: "14 Escritórios Agrícolas",
+    cover: "https://i.pinimg.com/originals/f0/4f/4c/f04f4c626c030fb9328b23b5255618f5.jpg",
   },
   {
     id: 6,
-    name: "California, USA",
-    Villas: "12 Villas",
-    Apartments: " 10 Apartments",
-    Offices: "07 Offices",
-    cover: "./images/location/city-6.png",
+    name: "Bahia",
+    Villas: "16 Fazendas",
+    Apartments: "5 Silos",
+    Offices: "8 Escritórios Agrícolas",
+    cover: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Zona_Rural_de_S%C3%ADtio_do_Mato%2C_Bahia%2C_Brasil..JPG",
   },
 ]
 export const team = [
   {
     list: "50",
     cover: "../images/customer/team-1.jpg",
-    address: "Liverpool, Canada",
-    name: "Sargam S. Singh",
-    icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
+    address: "Ribeirão Preto, São Paulo, Brazil",
+    name: "João P. Silva",
+    icon: [
+      <i class='fa-brands fa-facebook-f'></i>,
+      <i class='fa-brands fa-linkedin'></i>,
+      <i class='fa-brands fa-twitter'></i>,
+      <i class='fa-brands fa-instagram'></i>
+    ],
   },
   {
     list: "70",
     cover: "../images/customer/team-2.jpg",
-    address: "Montreal, Canada",
-    name: "Harijeet M. Siller",
-    icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
+    address: "Cuiabá, Mato Grosso, Brazil",
+    name: "Marina A. Santos",
+    icon: [
+      <i class='fa-brands fa-facebook-f'></i>,
+      <i class='fa-brands fa-linkedin'></i>,
+      <i class='fa-brands fa-twitter'></i>,
+      <i class='fa-brands fa-instagram'></i>
+    ],
   },
   {
     list: "80",
     cover: "../images/customer/team-3.jpg",
-    address: "Denever, USA",
-    name: "Anna K. Young",
-    icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
+    address: "Palmas, Tocantins, Brazil",
+    name: "Carlos E. Almeida",
+    icon: [
+      <i class='fa-brands fa-facebook-f'></i>,
+      <i class='fa-brands fa-linkedin'></i>,
+      <i class='fa-brands fa-twitter'></i>,
+      <i class='fa-brands fa-instagram'></i>
+    ],
   },
   {
     list: "51",
     cover: "../images/customer/team-4.jpg",
-    address: "2272 Briarwood Drive",
-    name: "Michael P. Grimaldo",
-    icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
+    address: "Goiânia, Goiás, Brazil",
+    name: "Fernanda M. Costa",
+    icon: [
+      <i class='fa-brands fa-facebook-f'></i>,
+      <i class='fa-brands fa-linkedin'></i>,
+      <i class='fa-brands fa-twitter'></i>,
+      <i class='fa-brands fa-instagram'></i>
+    ],
   },
   {
     list: "42",
     cover: "../images/customer/team-5.jpg",
-    address: "2272 Briarwood Drive",
-    name: "Michael P. Grimaldo",
-    icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
+    address: "Uberlândia, Minas Gerais, Brazil",
+    name: "Pedro R. Oliveira",
+    icon: [
+      <i class='fa-brands fa-facebook-f'></i>,
+      <i class='fa-brands fa-linkedin'></i>,
+      <i class='fa-brands fa-twitter'></i>,
+      <i class='fa-brands fa-instagram'></i>
+    ],
   },
   {
     list: "38",
-    cover: "../images/customer/team-5.jpg",
-    address: "Montreal, USA",
-    name: "Adam K. Jollio",
-    icon: [<i class='fa-brands fa-facebook-f'></i>, <i class='fa-brands fa-linkedin'></i>, <i class='fa-brands fa-twitter'></i>, <i class='fa-brands fa-instagram'></i>],
+    cover: "../images/customer/team-6.jpg",
+    address: "Campo Grande, Mato Grosso do Sul, Brazil",
+    name: "Ana L. Ribeiro",
+    icon: [
+      <i class='fa-brands fa-facebook-f'></i>,
+      <i class='fa-brands fa-linkedin'></i>,
+      <i class='fa-brands fa-twitter'></i>,
+      <i class='fa-brands fa-instagram'></i>
+    ],
   },
-]
+
+];
 export const price = [
   {
-    plan: "Basic",
-    price: "29",
-    ptext: "per user, per month",
+    plan: "Básico",
+    price: "29,00",
+    ptext: "por mês",
     list: [
       {
         icon: <i class='fa-solid fa-check'></i>,
-        text: "99.5% Uptime Guarantee",
+        text: "Até 10 anúncios por mês",
       },
       {
         icon: <i class='fa-solid fa-check'></i>,
-        text: "120GB CDN Bandwidth",
+        text: "Alcance local",
       },
       {
         icon: <i class='fa-solid fa-check'></i>,
-        text: "5GB Cloud Storage",
+        text: "Suporte via E-mail",
       },
-      { change: "color", icon: <i class='fa-solid fa-x'></i>, text: "Personal Help Support" },
-      { change: "color", icon: <i class='fa-solid fa-x'></i>, text: "Enterprise SLA" },
+      { change: "color", icon: <i class='fa-solid fa-x'></i>, text: "Análise Avançada de Desempenho" },
+      { change: "color", icon: <i class='fa-solid fa-x'></i>, text: "Anúncios em Destaque" },
     ],
   },
   {
-    best: "Best Value",
-    plan: "Standard",
-    price: "49",
-    ptext: "per user, per month",
+    plan: "Profissional",
+    price: "59,00",
+    ptext: "por mês",
     list: [
       {
         icon: <i class='fa-solid fa-check'></i>,
-        text: "99.5% Uptime Guarantee",
+        text: "Até 50 anúncios por mês",
       },
       {
         icon: <i class='fa-solid fa-check'></i>,
-        text: "150GB CDN Bandwidth",
+        text: "Alcance nacional",
       },
       {
         icon: <i class='fa-solid fa-check'></i>,
-        text: "10GB Cloud Storage",
+        text: "Suporte via Chat",
       },
       {
         icon: <i class='fa-solid fa-check'></i>,
-        text: "Personal Help Support",
+        text: "Análise Avançada de Desempenho",
       },
-      {
-        change: "color",
-        icon: <i class='fa-solid fa-x'></i>,
-        text: "Enterprise SLA",
-      },
+      { change: "color", icon: <i class='fa-solid fa-x'></i>, text: "Anúncios em Destaque" },
     ],
   },
   {
-    plan: "Platinum",
-    price: "79",
-    ptext: "2 user, per month",
+    plan: "Empresarial",
+    price: "99,00",
+    ptext: "por mês",
     list: [
       {
         icon: <i class='fa-solid fa-check'></i>,
-        text: "100% Uptime Guarantee",
+        text: "Anúncios ilimitados",
       },
       {
         icon: <i class='fa-solid fa-check'></i>,
-        text: "200GB CDN Bandwidth",
+        text: "Alcance global",
       },
       {
         icon: <i class='fa-solid fa-check'></i>,
-        text: "20GB Cloud Storage",
+        text: "Suporte 24/7",
       },
       {
         icon: <i class='fa-solid fa-check'></i>,
-        text: "Personal Help Support",
+        text: "Análise Avançada de Desempenho",
       },
       {
         icon: <i class='fa-solid fa-check'></i>,
-        text: "Enterprise SLA",
+        text: "Anúncios em Destaque",
       },
     ],
   },
-]
+];
 export const footer = [
   {
-    title: "LAYOUTS",
-    text: [{ list: "Home Page" }, { list: "About Page" }, { list: "Service Page" }, { list: "Property Page" }, { list: "Contact Page" }, { list: "Single Blog" }],
+    title: "Páginas",
+    text: [{ list: "Página Inicial" }, { list: "Página Sobre" }, { list: "Página de Serviço" }, { list: "Página de Propriedade" }, { list: "Página de Contato" }, { list: "Blog Único" }],
   },
   {
-    title: "ALL SECTIONS",
-    text: [{ list: "Headers" }, { list: "Features" }, { list: "Attractive" }, { list: "Testimonials" }, { list: "Videos" }, { list: "Footers" }],
+    title: "Seçoes ",
+    text: [{ list: "Cabeçalhos" }, { list: "Características" }, { list: "Atraentes" }, { list: "Depoimentos" }, { list: "Vídeos" }, { list: "Rodapés" }],
   },
   {
-    title: "COMPANY",
-    text: [{ list: "About" }, { list: "Blog" }, { list: "Pricing" }, { list: "Affiliate" }, { list: "Login" }, { list: "Changelog" }],
+    title: "Empresa",
+    text: [{ list: "Sobre" }, { list: "Blog" }, { list: "Preços" }, { list: "Afiliados" }, { list: "Login" }, { list: "Mudanças" }],
   },
 ]
+

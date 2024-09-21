@@ -83,7 +83,7 @@ const Announce = () => {
         <div className="container">
           <div className="card-group">
             <div
-              className={`card ${category === "machinery" ? "selected" : ""}`}
+              className={`card R${category === "machinery" ? "selected" : ""}`}
               onClick={() => handleCategorySelection("machinery")}
               style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/cadastro/cadastrar-maquina.jpg)` }}
             >
@@ -92,7 +92,7 @@ const Announce = () => {
               </div>
             </div>
             <div
-              className={`card ${category === "land" ? "selected" : ""}`}
+              className={`card R${category === "land" ? "selected" : ""}`}
               onClick={() => handleCategorySelection("land")}
               style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/cadastro/cadastrar-terra.jpg)` }}
             >
