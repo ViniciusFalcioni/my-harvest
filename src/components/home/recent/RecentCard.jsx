@@ -1,6 +1,5 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { MdDelete, MdEdit } from "react-icons/md"
 import "./RecentCard.css"
 
 const RecentCard = () => {
