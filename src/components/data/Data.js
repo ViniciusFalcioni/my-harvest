@@ -404,10 +404,6 @@ export const footer = [
     text: [{ list: "Página Inicial" }, { list: "Página Sobre" }, { list: "Página de Serviço" }, { list: "Página de Propriedade" }, { list: "Página de Contato" }, { list: "Blog Único" }],
   },
   {
-    title: "Seçoes ",
-    text: [{ list: "Cabeçalhos" }, { list: "Características" }, { list: "Atraentes" }, { list: "Depoimentos" }, { list: "Vídeos" }, { list: "Rodapés" }],
-  },
-  {
     title: "Empresa",
     text: [{ list: "Sobre" }, { list: "Blog" }, { list: "Preços" }, { list: "Afiliados" }, { list: "Login" }, { list: "Mudanças" }],
   },

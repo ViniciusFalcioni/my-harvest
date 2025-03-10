@@ -146,6 +146,7 @@ img {
   background: rgba(17, 40, 72, 0.629);
   z-index: -1;
 }
+
 .back .container {
   color: #fff;
   padding: 120px 0;
@@ -161,7 +162,7 @@ img {
   .grid4,
   .grid3,
   .grid5 {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
   }
   .heading {
     width: 100%;

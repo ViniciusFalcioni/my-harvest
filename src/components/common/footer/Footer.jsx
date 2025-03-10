@@ -45,7 +45,7 @@ const Footer = () => {
         </div>
       </footer>
       <div className='legal'>
-        <span>My Harvest - 2024</span>
+        <span>My Harvest - 2025</span>
       </div>
     </>
   )
