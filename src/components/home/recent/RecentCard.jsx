@@ -3,6 +3,15 @@ import { Link } from "react-router-dom"
 import "./RecentCard.css"
 
 const RecentCard = () => {
+  // Função para formatar o valor em Reais (BRL)
+  const formatCurrency = (value) => {
+    return new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+      minimumFractionDigits: 2,
+    }).format(value)
+  }
+
   // Anúncios fixos pré-definidos
   const ads = [
     {
@@ -15,10 +24,8 @@ const RecentCard = () => {
       brand: "John Deere",
       model: "5055E",
       year: "2020",
-      machineryDetails: {
-        category: "Venda"
-      },
-      landDetails: null
+      machineryDetails: { category: "Venda" },
+      landDetails: null,
     },
     {
       id: 2,
@@ -27,10 +34,8 @@ const RecentCard = () => {
       price: "5000000",
       location: "Mato Grosso, MT",
       description: "Excelente fazenda de soja com irrigação automática e solo argiloso.",
-      landDetails: {
-        category: "Venda"
-      },
-      machineryDetails: null
+      landDetails: { category: "Venda" },
+      machineryDetails: null,
     },
     {
       id: 3,
@@ -42,10 +47,8 @@ const RecentCard = () => {
       brand: "John Deere",
       model: "S660",
       year: "2018",
-      machineryDetails: {
-        category: "Venda"
-      },
-      landDetails: null
+      machineryDetails: { category: "Venda" },
+      landDetails: null,
     },
     {
       id: 4,
@@ -54,10 +57,8 @@ const RecentCard = () => {
       price: "2000000",
       location: "Minas Gerais, MG",
       description: "Sítio bem localizado com plantação de café e infraestrutura completa.",
-      landDetails: {
-        category: "Venda"
-      },
-      machineryDetails: null
+      landDetails: { category: "Venda" },
+      machineryDetails: null,
     },
     {
       id: 5,
@@ -69,10 +70,8 @@ const RecentCard = () => {
       brand: "Massey Ferguson",
       model: "5200",
       year: "2019",
-      machineryDetails: {
-        category: "Venda"
-      },
-      landDetails: null
+      machineryDetails: { category: "Venda" },
+      landDetails: null,
     },
     {
       id: 6,
@@ -81,59 +80,65 @@ const RecentCard = () => {
       price: "3500000",
       location: "Bahia, BA",
       description: "Fazenda de milho com sistema de irrigação eficiente e solo fértil.",
-      landDetails: {
-        category: "Venda"
-      },
-      machineryDetails: null
-    }
+      landDetails: { category: "Venda" },
+      machineryDetails: null,
+    },
   ]
 
-
-
   return (
-    <>
-      <div className='content grid3 mtop'>
-        {ads.map((val, index) => {
-          const { id, category_id, location, title, price, description, brand, model, year, landDetails, machineryDetails } = val
-          const cover = category_id === 1
+    <div className="content grid3 mtop">
+      {ads.map((val, index) => {
+        const {
+          id,
+          category_id,
+          location,
+          title,
+          price,
+          description,
+          brand,
+          model,
+          year,
+          landDetails,
+          machineryDetails,
+        } = val
+        const cover =
+          category_id === 1
             ? "https://maxmaq.com.br/wp-content/uploads/2019/09/colheitadeira_s660_campo1_large_7d29a0524951fda410ad584d8bb04bda839e9af5-1.jpg"
             : category_id === 2
               ? "https://sobrevivencialismo.com/wp-content/uploads/2019/01/soyfields.jpg?w=860"
               : "https://via.placeholder.com/300"
-          const category = landDetails ? landDetails.category : machineryDetails ? machineryDetails.category : null
+        const category = landDetails ? landDetails.category : machineryDetails ? machineryDetails.category : null
 
-          return (
-            <div className='box-card shadow' key={index}>
-              <Link to={`/anuncio/${id}`} className='img'>
-                <img src={cover} alt='' />
-              </Link>
-              <div className='text'>
-                <div className='category flex'>
-                  <span style={{ background: "#2E8B57", color: "#fff" }}>{category}</span>
-                  <i className='fa fa-heart'></i>
-                </div>
-                <h4>{title}</h4>
-                <p>{description}</p>
-                {brand && model && year && (
-                  <p>
-                    <i className='fa fa-tractor'></i> {brand} - {model} - {year}
-                  </p>
-                )}
-                <p>
-                  <i className='fa fa-location-dot'></i> {location}
-                </p>
+        return (
+          <div className="box-card shadow" key={index}>
+            <Link to={`/anuncio/${id}`} className="img">
+              <img src={cover} alt="" />
+            </Link>
+            <div className="text">
+              <div className="category flex">
+                <span style={{ background: "#2E8B57", color: "#fff" }}>{category}</span>
+                <i className="fa fa-heart"></i>
               </div>
-              <div className='button flex'>
-                <div>
-                  <button className='btn2'>R$ {Number(price).toFixed(2)}</button>
-                </div>
-
+              <h4>{title}</h4>
+              <p>{description}</p>
+              {brand && model && year && (
+                <p>
+                  <i className="fa fa-tractor"></i> {brand} - {model} - {year}
+                </p>
+              )}
+              <p>
+                <i className="fa fa-location-dot"></i> {location}
+              </p>
+            </div>
+            <div className="button flex">
+              <div>
+                <button className="btn2">{formatCurrency(price)}</button>
               </div>
             </div>
-          )
-        })}
-      </div>
-    </>
+          </div>
+        )
+      })}
+    </div>
   )
 }
 

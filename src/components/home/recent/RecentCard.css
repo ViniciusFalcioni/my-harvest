@@ -84,3 +84,10 @@
     color: #d4d4d4;
   }
   
+  @media screen and (max-width: 768px) {
+    .img img {
+      height: 250px; /* Reduzindo a altura da imagem no mobile */
+      object-fit: cover; /* Garante que a imagem preencha o espaço sem distorção */
+    }
+  }
+  

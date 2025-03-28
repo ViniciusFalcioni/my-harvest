@@ -5,62 +5,125 @@
   background-size: cover;
   height: 90vh;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
+
 .hero .container {
-  padding-top: 15%;
+  max-width: 1200px;
+  width: 90%;
 }
+
 .hero h1 {
   color: #fff;
-  font-size: 50px;
+  font-size: 48px;
   text-shadow: 1px 1px #000000ba;
+  margin-bottom: 15px;
 }
+
 .hero p {
   color: #fff;
   text-shadow: 1px 1px #000000ba;
+  font-size: 18px;
+  margin-bottom: 20px;
 }
+
+/* Estilização do formulário */
 form {
   background-color: #fff;
-  border-radius: 5px;
-  margin-top: 50px;
-  padding: 0 20px;
-}
-form input {
-  padding: 10px;
+  border-radius: 8px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
   width: 100%;
-  border: 1px solid rgba(128, 128, 128, 0.2);
-  margin-top: 5px;
-  border-radius: 5px;
+  max-width: 1100px; /* Aumentei a largura do formulário */
+  margin: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-form span {
-  font-size: 14px;
-  color: grey;
-}
-input::placeholder {
-  font-size: 17px;
-  color: black;
-}
+
+/* Ajuste dos campos */
 form .box {
-  padding: 15px;
-  border-left: 1px solid rgba(128, 128, 128, 0.2);
+  flex: 1;
+  min-width: 250px; /* Aumentei a largura mínima */
+  display: flex;
+  flex-direction: column; /* Organiza os elementos verticalmente */
+  align-items: flex-start; /* Alinha tudo à esquerda */
 }
-form .box:nth-child(1) {
-  border-left: none;
+
+/* Rótulos alinhados à esquerda */
+form span {
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: left;
+  width: 100%;
 }
-form h4 {
-  font-weight: 500;
+
+/* Campos de input e select */
+form select,
+form input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  border-radius: 5px;
+  font-size: 17px;
+  background-color: #fff;
+  cursor: pointer;
+  text-align: left; /* Alinha o texto dentro do campo */
 }
+
+/* Botão de busca */
+button.btn1 {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 14px 25px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+}
+
+button.btn1:hover {
+  background-color: #0056b3;
+}
+
+/* Responsividade */
 @media screen and (max-width: 800px) {
+  .hero {
+    height: auto;
+    padding: 50px 0;
+  }
+
   .hero .container {
-    padding-top: 30%;
+    padding-top: 20%;
+    text-align: center;
   }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
   form {
-    display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 20px;
   }
+
   form .box {
-    border-left: none;
-  }
-  form input {
     width: 100%;
+    align-items: flex-start;
+  }
+
+  button.btn1 {
+    width: 100%;
+    padding: 14px;
   }
 }
