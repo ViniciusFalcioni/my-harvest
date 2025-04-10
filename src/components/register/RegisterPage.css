@@ -1,0 +1,162 @@
+/* RegisterPage.css */
+
+.register-page {
+    display: flex;
+    min-height: 100vh;
+    background-color: #fff;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .register-left {
+    flex: 1;
+    background: url('../images/bg-login.jpg') no-repeat center center/cover;
+    display: none;
+  }
+  
+  .register-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .register-right {
+    flex: 1;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f7f7f7;
+    border-radius: 12px;
+    max-width: 450px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo-register {
+    width: 300px;
+    margin: 0 auto 30px auto;
+    display: block;
+  }
+  
+  .form-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2e8b57;
+    font-weight: 700;
+  }
+  
+  .register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .register-form label {
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .register-form input {
+    padding: 14px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border 0.3s ease;
+  }
+  
+  .register-form input:focus {
+    border-color: #2e8b57;
+  }
+  
+  .register-form button {
+    background-color: #2e8b57;
+    color: white;
+    padding: 14px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+  
+  .register-form button:hover {
+    background-color: #256b45;
+  }
+  
+  .signup {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+  }
+  
+  .signup a {
+    color: #663600;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .signup a:hover {
+    text-decoration: underline;
+  }
+  
+  .social-login {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .social-login p {
+    margin-bottom: 10px;
+  }
+  
+  .icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .icon {
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .icon:hover {
+    transform: scale(1.1);
+  }
+  
+  .fb {
+    color: #3b5998;
+  }
+  
+  .google {
+    color: #db4437;
+  }
+  
+  .apple {
+    color: #000;
+  }
+  
+  @media (min-width: 768px) {
+    .register-left {
+      display: block;
+    }
+  
+    .register-right {
+      max-width: none;
+      border-radius: 0;
+    }
+  
+    .register-page {
+      margin: 0 auto;
+    }
+  }
+  

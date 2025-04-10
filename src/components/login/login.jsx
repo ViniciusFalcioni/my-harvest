@@ -1,0 +1,50 @@
+import React from "react";
+import "./LoginPage.css";
+import { FaFacebookF, FaGoogle, FaApple } from "react-icons/fa";
+import ImageFundo from '../images/bg-login.jpg';
+import Logo from '../images/logo.png';
+
+const LoginPage = () => {
+    return (
+        <div className="login-page">
+            <div className="login-left">
+                <img src={ImageFundo} alt="Login visual" />
+            </div>
+            <div className="login-right">
+                <img src={Logo} alt="Logo" className="logo" />
+                <div className="form-container">
+                    <h2>Entrar</h2>
+                    <form className="login-form">
+                        <label>Usuário</label>
+                        <input type="email" placeholder="Digite seu e-mail" required />
+
+                        <label>Senha</label>
+                        <input type="password" placeholder="Digite sua senha" required />
+
+                        <div className="login-options">
+
+                            <a href="#">Esqueceu a senha?</a>
+                        </div>
+
+                        <button type="submit">Entrar</button>
+
+                        <p className="signup">
+                            Ainda não tem uma conta? <a href="#">Cadastre-se</a>
+                        </p>
+
+                        <div className="social-login">
+                            <p>Ou entre com</p>
+                            <div className="icons">
+                                <FaFacebookF className="icon fb" />
+                                <FaGoogle className="icon google" />
+                                <FaApple className="icon apple" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default LoginPage;
