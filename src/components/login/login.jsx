@@ -3,6 +3,7 @@ import "./LoginPage.css";
 import { FaFacebookF, FaGoogle, FaApple } from "react-icons/fa";
 import ImageFundo from '../images/bg-login.jpg';
 import Logo from '../images/logo.png';
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const LoginPage = () => {
     return (
@@ -29,7 +30,7 @@ const LoginPage = () => {
                         <button type="submit">Entrar</button>
 
                         <p className="signup">
-                            Ainda não tem uma conta? <a href="#">Cadastre-se</a>
+                            Ainda não tem uma conta? <Link to="/register">Cadastre-se</Link>
                         </p>
 
                         <div className="social-login">

@@ -26,9 +26,11 @@ const Header = () => {
             {/* <h4>
               <span>2</span> My List
             </h4> */}
-            <button className='btn1'>
+          
+              <Link to="/login" className='btn1'>
               <i className='fa fa-sign-out'></i> Entrar
-            </button>
+              </Link>
+           
           </div>
 
           <div className='toggle'>
