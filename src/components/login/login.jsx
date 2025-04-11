@@ -24,7 +24,7 @@ const LoginPage = () => {
 
                         <div className="login-options">
 
-                            <a href="#">Esqueceu a senha?</a>
+                            <Link to="/login">Esqueceu a senha?</Link>
                         </div>
 
                         <button type="submit">Entrar</button>

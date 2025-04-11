@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import "./AdDetailsPage.css";
 
@@ -22,9 +22,9 @@ const AdDetailsPage = () => {
     }
   };
 
-  const [selectedImage, setSelectedImage] = useState(
+  const selectedImage =
     "https://maxmaq.com.br/wp-content/uploads/2019/09/colheitadeira_s660_campo1_large_7d29a0524951fda410ad584d8bb04bda839e9af5-1.jpg"
-  );
+;
 
   const mapStyles = {
     height: "400px",
