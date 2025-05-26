@@ -7,17 +7,21 @@ header {
   top: 0;
   z-index: 99999;
 }
+
 header img {
-  width: 100%;
+  width: 285px;
 }
+
 header a {
   margin-left: 30px;
   transition: 0.5s;
   font-weight: 500;
 }
+
 header a:hover {
   color: #2E8B57;
 }
+
 header span {
   width: auto;
   padding: 0px 6px;
@@ -27,38 +31,47 @@ header span {
   margin-right: 4px;
   font-weight: 400;
 }
+
 header h4 {
   font-weight: 500;
   margin-right: 20px;
 }
+
 header .toggle {
   display: none;
 }
+
 @media screen and (max-width: 768px) {
   header {
     padding: 0;
   }
+
   header img {
     margin-top: 30px;
   }
+
   header .button {
     display: none;
   }
+
   header .nav .flex {
     display: none;
   }
+
   header .toggle {
     display: block;
     margin-top: 20px;
   }
+
   header .small {
     position: absolute;
-    top: 10vh;
+    top: 13vh;
     left: 0;
     width: 100%;
     background-color: #2E8B57;
     padding: 20px;
   }
+
   header li a {
     display: inline-block;
     margin-bottom: 20px;

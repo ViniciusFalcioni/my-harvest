@@ -1,110 +1,327 @@
-.contact .card-group {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2em;
-  margin-top: 2em;
+/* Announce.css - Estilo Geral da Página de Anúncio */
+.announce-page-section {
+  /* Antigo .contact.mb - use um nome mais específico */
+  padding-bottom: 40px;
 }
 
-.contact .card {
+.announce-page-section .container {
+  max-width: 900px;
+  /* Ajuste a largura máxima conforme necessário */
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Seleção de Categoria */
+.category-selector {
+  /* Antigo .card-group */
+  display: flex;
+  flex-wrap: wrap;
+  /* Permite que os cards quebrem a linha em telas menores */
+  justify-content: center;
+  gap: 20px;
+  /* Espaçamento entre os cards */
+  margin: 30px 0 40px;
+}
+
+.category-card {
+  /* Antigo .card */
   position: relative;
-  width: 300px;
-  height: 300px;
-  margin: 0 10px;
+  flex: 1;
+  /* Ocupa espaço igualitário */
+  min-width: 280px;
+  /* Largura mínima para cada card */
+  max-width: 350px;
+  /* Largura máxima */
+  height: 280px;
   background-size: cover;
   background-position: center;
+  border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.3s ease;
-  border-radius: 0.5em;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  /* Garante que o overlay respeite o border-radius */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.contact .card.selected {
-  transform: scale(1.1);
+.category-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
-.contact .card:hover {
+.category-card.selected {
   transform: scale(1.05);
+  box-shadow: 0 0 0 4px #2E8B57, 0 8px 16px rgba(46, 139, 87, 0.3);
+  /* Destaque mais forte */
+  outline: none;
 }
 
-.contact .card .overlay {
+.category-card .overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 20%, rgba(0, 0, 0, 0) 80%);
   display: flex;
   align-items: flex-end;
+  /* Alinha o botão na parte inferior */
   justify-content: center;
-  border-radius: 0.5em;
-  padding: 1em;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  /* Para o gradiente */
 }
 
-.contact .card .overlay button {
-  background-color: #2E8B57;
-  color: #fff;
+.category-card .overlay .category-button {
+  /* Antigo .overlay button */
+  background-color: #fff;
+  color: #2E8B57;
   border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-}
-
-.contact .card .overlay button:hover {
-  background-color: #8FBC8F;
-}
-
-.contact form {
-  padding: 30px;
-}
-
-.contact form div {
-  display: flex;
-}
-
-.contact textarea {
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  width: 100%;
-  border-radius: 5px;
-  margin-bottom: 20px;
-}
-
-.contact input, .contact select {
-  margin-bottom: 20px;
-  margin-right: 10px;
-  padding: 10px;
+  padding: 12px 25px;
   font-size: 1em;
-  width: 100%;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  font-weight: 600;
+  cursor: pointer;
   border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  width: auto;
+  /* Botão com largura do conteúdo */
 }
 
-.contact input[type="file"] {
-  padding: 5px;
+.category-card:hover .overlay .category-button {
+  background-color: #2E8B57;
+  color: #fff;
 }
 
-.contact button[type="submit"] {
+.category-card.selected .overlay .category-button {
+  background-color: #2E8B57;
+  color: #fff;
+}
+
+
+/* Estilo do Formulário */
+.announce-form {
+  /* Antigo form.shadow */
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.announce-form h4 {
+  font-size: 1.8em;
+  color: #333;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #444;
+  font-size: 0.95em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="email"],
+/* Adicione outros tipos se necessário */
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 1em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #2E8B57;
+  box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.2);
+  outline: none;
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Estilo para file input (básico, melhorias mais avançadas requerem JS/HTML complexo) */
+.form-group input[type="file"] {
+  padding: 10px;
+  /* Ajuste diferente para file input */
+  border: 1px dashed #ddd;
+  /* Visual um pouco diferente */
+  background-color: #f9f9f9;
+}
+
+.form-group input[type="file"]::-webkit-file-upload-button {
+  /* Estiliza o botão do file input (Chrome/Edge) */
+  background-color: #5c677d;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.form-group input[type="file"]::-webkit-file-upload-button:hover {
+  background-color: #4a5468;
+}
+
+.form-group input[type="file"]::file-selector-button {
+  /* Padrão mais novo (Firefox) */
+  background-color: #5c677d;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.form-group input[type="file"]::file-selector-button:hover {
+  background-color: #4a5468;
+}
+
+
+/* Para campos lado a lado em telas maiores */
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  /* Permite quebrar se não couber */
+  gap: 20px;
+  /* Espaçamento entre os campos na linha */
+  margin-bottom: 20px;
+  /* Mantém o espaçamento inferior como .form-group */
+}
+
+.form-row .form-group {
+  flex: 1;
+  /* Cada grupo de campo na linha ocupa espaço igual */
+  min-width: 200px;
+  /* Largura mínima para cada campo na linha */
+  margin-bottom: 0;
+  /* Remove margem inferior, pois .form-row já tem */
+}
+
+.submit-button {
+  /* Antigo button[type="submit"] */
   background-color: #2E8B57;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  padding: 15px 25px;
+  font-size: 1.1em;
+  font-weight: 600;
   cursor: pointer;
   border-radius: 5px;
   width: 100%;
+  /* Botão ocupa largura total */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+  /* Espaço acima do botão */
 }
 
-.contact button[type="submit"]:hover {
-  background-color: #8FBC8F;
+.submit-button:hover {
+  background-color: #257247;
+  /* Verde um pouco mais escuro */
+  transform: translateY(-2px);
 }
 
+.submit-button:active {
+  transform: translateY(0);
+}
+
+/* Responsividade */
+
+/* Telas menores que 768px (tablets e celulares) */
 @media screen and (max-width: 768px) {
-  .contact h4 {
-    width: 100%;
-    margin-bottom: 30px;
-  }
-
-  .contact form div {
+  .category-selector {
     flex-direction: column;
+    /* Cards de categoria um abaixo do outro */
+    align-items: center;
+    /* Centraliza os cards */
+    gap: 25px;
   }
 
-  .contact input, .contact select {
+  .category-card {
     width: 100%;
+    /* Ocupa a largura total disponível */
+    max-width: 400px;
+    /* Uma largura máxima razoável no mobile */
+    height: 250px;
+    /* Altura um pouco menor */
+  }
+
+  .announce-form {
+    padding: 20px;
+  }
+
+  .announce-form h4 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    /* Campos da linha um abaixo do outro */
+    gap: 0;
+    /* O .form-group interno já terá margin-bottom */
+  }
+
+  .form-row .form-group {
+    min-width: 100%;
+    /* Ocupa toda a largura */
+    margin-bottom: 20px;
+    /* Adiciona margem inferior quando empilhado */
+  }
+
+  .form-row .form-group:last-child {
+    margin-bottom: 0;
+    /* Remove margem do último item no form-row empilhado */
+  }
+
+  .form-group input[type="text"],
+  .form-group input[type="number"],
+  .form-group textarea,
+  .form-group select {
+    padding: 10px 12px;
+    font-size: 0.95em;
+  }
+
+  .submit-button {
+    padding: 12px 20px;
+    font-size: 1em;
+  }
+}
+
+/* Telas muito pequenas */
+@media screen and (max-width: 480px) {
+  .category-card {
+    height: 220px;
+  }
+
+  .category-card .overlay .category-button {
+    padding: 10px 20px;
+    font-size: 0.9em;
+  }
+
+  .announce-form {
+    padding: 15px;
+  }
+
+  .announce-form h4 {
+    font-size: 1.3em;
   }
 }

@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import "./RecentCard.css"
+import { ads } from "../../data/Data"
 
 const RecentCard = () => {
   // Função para formatar o valor em Reais (BRL)
@@ -11,79 +12,6 @@ const RecentCard = () => {
       minimumFractionDigits: 2,
     }).format(value)
   }
-
-  // Anúncios fixos pré-definidos
-  const ads = [
-    {
-      id: 1,
-      category_id: 1,
-      title: "Trator John Deere 5055E",
-      price: "120000",
-      location: "São Paulo, SP",
-      description: "Trator John Deere 5055E em ótimo estado. Perfeito para grandes áreas agrícolas.",
-      brand: "John Deere",
-      model: "5055E",
-      year: "2020",
-      machineryDetails: { category: "Venda" },
-      landDetails: null,
-    },
-    {
-      id: 2,
-      category_id: 2,
-      title: "Fazenda de Soja - 300 hectares",
-      price: "5000000",
-      location: "Mato Grosso, MT",
-      description: "Excelente fazenda de soja com irrigação automática e solo argiloso.",
-      landDetails: { category: "Venda" },
-      machineryDetails: null,
-    },
-    {
-      id: 3,
-      category_id: 1,
-      title: "Colheitadeira S660",
-      price: "850000",
-      location: "Goiás, GO",
-      description: "Colheitadeira S660 em perfeito estado, ideal para colheita de grandes volumes.",
-      brand: "John Deere",
-      model: "S660",
-      year: "2018",
-      machineryDetails: { category: "Venda" },
-      landDetails: null,
-    },
-    {
-      id: 4,
-      category_id: 2,
-      title: "Sítio - 50 hectares",
-      price: "2000000",
-      location: "Minas Gerais, MG",
-      description: "Sítio bem localizado com plantação de café e infraestrutura completa.",
-      landDetails: { category: "Venda" },
-      machineryDetails: null,
-    },
-    {
-      id: 5,
-      category_id: 1,
-      title: "Plantadeira Massey Ferguson 5200",
-      price: "400000",
-      location: "Paraná, PR",
-      description: "Plantadeira Massey Ferguson 5200 em excelente estado para plantio de grandes áreas.",
-      brand: "Massey Ferguson",
-      model: "5200",
-      year: "2019",
-      machineryDetails: { category: "Venda" },
-      landDetails: null,
-    },
-    {
-      id: 6,
-      category_id: 2,
-      title: "Fazenda de Milho - 150 hectares",
-      price: "3500000",
-      location: "Bahia, BA",
-      description: "Fazenda de milho com sistema de irrigação eficiente e solo fértil.",
-      landDetails: { category: "Venda" },
-      machineryDetails: null,
-    },
-  ]
 
   return (
     <div className="content grid3 mtop">

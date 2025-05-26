@@ -1,59 +1,228 @@
 .ad-details {
   display: flex;
   flex-direction: row;
+  /* Lado a lado em telas maiores */
   padding: 20px;
-  gap: 20px;
+  gap: 30px;
+  /* Aumentei um pouco o gap para melhor espaçamento */
   background-color: #f9f9f9;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  /* Sombra um pouco mais suave */
   margin: 20px 0;
 }
 
+.main-image {
+  flex: 1 1 50%;
+  /* Permite encolher/crescer, base de 50% */
+  max-width: 600px;
+  /* Largura máxima para a imagem/container da imagem */
+  min-width: 280px;
+  /* Largura mínima antes de quebrar ou ficar muito pequeno */
+}
+
 .main-image img {
-  width: 600px;
+  width: 100%;
+  /* Imagem ocupa 100% do seu container (.main-image) */
   height: auto;
+  /* Mantém a proporção */
   border-radius: 10px;
+  display: block;
+  /* Remove espaço extra abaixo da imagem */
 }
 
 .details {
-  flex: 1;
+  flex: 1 1 50%;
+  /* Permite encolher/crescer, base de 50% */
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 
 .details h2 {
-  margin-bottom: 20px;
+  margin-top: 0;
+  margin-bottom: 15px;
   color: #333;
+  font-size: 2em;
+  line-height: 1.3;
 }
 
 .details p {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   color: #555;
+  line-height: 1.6;
 }
 
+.details p i {
+  margin-right: 8px;
+  color: #007BFF;
+  width: 20px;
+  text-align: center;
+}
+
+.additional-details {
+  margin-top: 15px;
+  margin-bottom: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #e0e0e0;
+  /* Borda um pouco mais visível */
+}
+
+.additional-details p {
+  font-size: 0.95em;
+  margin-bottom: 8px;
+}
+
+.contact-button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  /* Para que não ocupe a largura toda por padrão no desktop */
+  font-size: 1.1em;
+  /* Botão um pouco maior */
+  font-weight: 500;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: auto;
+  /* Empurra o botão para o final do container .details */
+  align-self: flex-start;
+  /* Alinha à esquerda no desktop */
+}
+
+.contact-button:hover {
+  background-color: #0056b3;
+}
+
+/* Galeria de Imagens (se você for usar no futuro) */
 .image-gallery {
   display: flex;
+  flex-wrap: wrap;
+  /* Permite que as imagens quebrem para a próxima linha */
   gap: 10px;
   margin-top: 20px;
 }
 
 .image-gallery img {
-  width: 100px;
-  height: 100px;
+  width: calc(25% - 10px);
+  /* Exemplo: 4 imagens por linha, considerando o gap */
+  max-width: 120px;
+  /* Tamanho máximo da miniatura */
+  height: auto;
+  aspect-ratio: 1 / 1;
+  /* Mantém a imagem quadrada */
   object-fit: cover;
   border-radius: 5px;
   cursor: pointer;
   border: 2px solid transparent;
-  transition: border 0.3s;
+  transition: border-color 0.3s ease;
+  /* Transição apenas na cor da borda */
 }
 
 .image-gallery img.selected,
 .image-gallery img:hover {
-  border: 2px solid #007BFF;
+  border-color: #007BFF;
+  /* Usar border-color para evitar reflow */
 }
 
 .map {
-  margin-top: 20px;
+  margin-top: 30px;
+  /* Aumentei o espaçamento */
   margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  /* Para garantir que o mapa respeite o border-radius */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  /* Sombra para o mapa também */
+}
+
+
+/* === Media Queries para Responsividade === */
+
+/* Telas médias (tablets em modo paisagem, laptops pequenos) */
+@media screen and (max-width: 992px) {
+  .ad-details {
+    gap: 20px;
+    /* Diminui o gap */
+  }
+
+  .details h2 {
+    font-size: 1.8em;
+  }
+}
+
+/* Telas pequenas (tablets em modo retrato, celulares grandes) */
+@media screen and (max-width: 768px) {
+  .ad-details {
+    flex-direction: column;
+    /* Imagem acima dos detalhes */
+    padding: 15px;
+    /* Menor padding em telas menores */
+  }
+
+  .main-image {
+    flex-basis: auto;
+    /* Reseta o flex-basis */
+    width: 100%;
+    /* Ocupa a largura total */
+    max-width: 100%;
+    /* Garante que não ultrapasse */
+    min-width: unset;
+    /* Reseta o min-width */
+  }
+
+  /* A imagem dentro de .main-image já está com width: 100% */
+
+  .details {
+    flex-basis: auto;
+    /* Reseta o flex-basis */
+  }
+
+  .details h2 {
+    font-size: 1.6em;
+    /* Título um pouco menor */
+  }
+
+  .contact-button {
+    width: 100%;
+    /* Botão ocupa largura total para fácil clique */
+    padding: 15px;
+    font-size: 1.1em;
+    align-self: stretch;
+    /* Para ocupar a largura se ainda for inline-block */
+  }
+
+  .image-gallery img {
+    /* Exemplo: 3 imagens por linha */
+    width: calc(33.333% - 10px);
+  }
+}
+
+/* Telas muito pequenas (celulares) */
+@media screen and (max-width: 480px) {
+  .details h2 {
+    font-size: 1.4em;
+  }
+
+  .details p {
+    font-size: 0.95em;
+  }
+
+  .additional-details p {
+    font-size: 0.9em;
+  }
+
+  .contact-button {
+    font-size: 1em;
+  }
+
+  .image-gallery img {
+    /* Exemplo: 2 imagens por linha */
+    width: calc(50% - 10px);
+    max-width: none;
+    /* Permite que sejam maiores se apenas 2 por linha */
+  }
 }

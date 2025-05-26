@@ -1,5 +1,11 @@
 .hero {
   background-image: url("../../../../public/images/banner.png");
+  /* Verifique se o caminho está correto a partir da pasta public */
+  /* Uma alternativa comum para imagens da pasta public é usar process.env.PUBLIC_URL:
+     background-image: url(process.env.PUBLIC_URL + "/images/banner.png");
+     Ou, se a imagem estiver na pasta src/assets, importe-a e use a variável.
+     Ex: import bannerImg from './assets/banner.png'; e background-image: url(bannerImg);
+  */
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -9,121 +15,219 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  color: #fff;
+  /* Definir cor padrão para textos dentro do hero */
 }
 
 .hero .container {
   max-width: 1200px;
+  /* Largura máxima do conteúdo */
   width: 90%;
+  /* Responsividade básica da largura */
+  margin: 0 auto;
+  /* Centraliza o container */
 }
 
 .hero h1 {
+  /* Supondo que o componente Heading renderize um h1 */
   color: #fff;
   font-size: 48px;
-  text-shadow: 1px 1px #000000ba;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  /* Sombra mais suave */
   margin-bottom: 15px;
 }
 
 .hero p {
+  /* Supondo que o componente Heading renderize um p para o subtítulo */
   color: #fff;
-  text-shadow: 1px 1px #000000ba;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
   font-size: 18px;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  /* Mais espaço antes do formulário */
 }
 
-/* Estilização do formulário */
-form {
+/* Estilização do formulário específico do Hero */
+.hero .hero-search-form {
   background-color: #fff;
   border-radius: 8px;
-  padding: 25px;
+  padding: 20px;
+  /* Padding um pouco menor para dar mais espaço interno */
   display: flex;
-  align-items: center;
+  align-items: flex-end;
+  /* Alinha verticalmente os itens do formulário */
   justify-content: space-between;
-  gap: 20px;
+  gap: 15px;
+  /* Gap entre os .box e o botão */
   width: 100%;
-  max-width: 1100px; /* Aumentei a largura do formulário */
-  margin: auto;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  /* Formulário um pouco menos largo que o container principal */
+  margin: 0 auto;
+  /* Centraliza o formulário */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  /* Sombra mais pronunciada */
 }
 
-/* Ajuste dos campos */
-form .box {
+/* Caixas de input/select dentro do formulário do Hero */
+.hero .hero-search-form .box {
   flex: 1;
-  min-width: 250px; /* Aumentei a largura mínima */
+  /* Distribui o espaço igualmente */
+  min-width: 180px;
+  /* Largura mínima antes de quebrar (ajuste conforme necessário) */
   display: flex;
-  flex-direction: column; /* Organiza os elementos verticalmente */
-  align-items: flex-start; /* Alinha tudo à esquerda */
+  flex-direction: column;
+  align-items: flex-start;
+  /* Alinha o label (span) à esquerda */
 }
 
-/* Rótulos alinhados à esquerda */
-form span {
-  font-size: 16px;
-  color: #333;
-  font-weight: bold;
-  margin-bottom: 5px;
+/* Labels (usando span atualmente) dentro das caixas do formulário do Hero */
+.hero .hero-search-form .box span {
+  font-size: 14px;
+  /* Label um pouco menor */
+  color: #4a4a4a;
+  /* Cor mais suave para o label */
+  font-weight: 500;
+  /* Peso da fonte normal para o label */
+  margin-bottom: 6px;
   text-align: left;
   width: 100%;
 }
 
-/* Campos de input e select */
-form select,
-form input {
+/* Campos de input e select dentro do formulário do Hero */
+.hero .hero-search-form .box select,
+.hero .hero-search-form .box input[type="text"] {
   width: 100%;
-  padding: 12px;
-  border: 1px solid rgba(128, 128, 128, 0.3);
+  padding: 10px 12px;
+  /* Padding interno */
+  border: 1px solid #ccc;
+  /* Borda mais visível */
   border-radius: 5px;
-  font-size: 17px;
+  font-size: 16px;
   background-color: #fff;
+  color: #333;
   cursor: pointer;
-  text-align: left; /* Alinha o texto dentro do campo */
+  text-align: left;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Botão de busca */
-button.btn1 {
+.hero .hero-search-form .box select:focus,
+.hero .hero-search-form .box input[type="text"]:focus {
+  border-color: #007bff;
+  /* Destaque no foco */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+  outline: none;
+}
+
+/* Botão de busca específico do formulário do Hero */
+.hero .hero-search-form .btn1 {
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 14px 25px;
+  padding: 10px 20px;
+  /* Padding ajustado para altura do input/select */
   border-radius: 5px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 16px;
+  /* Tamanho da fonte consistente */
+  font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-top: auto;
+  gap: 8px;
+  /* Espaço entre ícone e texto */
+  /* margin-top: auto; Removido, pois align-items: center no form deve cuidar disso */
+  white-space: nowrap;
+  /* Impede que o texto do botão quebre */
+  height: 42.5px;
+  /* Para alinhar com altura dos inputs + padding + borda */
+  transition: background-color 0.2s ease;
 }
 
-button.btn1:hover {
+.hero .hero-search-form .btn1:hover {
   background-color: #0056b3;
 }
 
+.hero .hero-search-form .btn1 i {
+  font-size: 1em;
+  /* Ajusta o tamanho do ícone em relação ao texto */
+}
+
 /* Responsividade */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 992px) {
+
+  /* Ajuste para telas médias antes de quebrar totalmente */
+  .hero .hero-search-form {
+    flex-wrap: wrap;
+    /* Permite que os itens quebrem para a próxima linha */
+    justify-content: center;
+    /* Centraliza os itens quando quebram */
+    max-width: 600px;
+    /* Formulário fica menor */
+  }
+
+  .hero .hero-search-form .box {
+    flex-basis: calc(50% - 10px);
+    /* Dois itens por linha, considerando o gap */
+    min-width: 150px;
+  }
+
+  .hero .hero-search-form .btn1 {
+    flex-basis: 100%;
+    /* Botão ocupa toda a largura na próxima linha se necessário */
+    justify-content: center;
+    /* Centraliza conteúdo do botão */
+    margin-top: 10px;
+    /* Adiciona margem se o botão quebrar para nova linha */
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+
+  /* Breakpoint original do usuário, ajustado para 768px */
   .hero {
     height: auto;
-    padding: 50px 0;
+    padding: 60px 0;
+    /* Padding vertical para a seção hero */
   }
 
   .hero .container {
-    padding-top: 20%;
+    /* padding-top: 20%; Removido, o padding da seção .hero é mais controlável */
     text-align: center;
   }
 
   .hero h1 {
-    font-size: 36px;
+    font-size: 32px;
+    /* Fonte menor para mobile */
   }
 
-  form {
+  .hero p {
+    font-size: 16px;
+  }
+
+  .hero .hero-search-form {
     flex-direction: column;
+    /* Itens do formulário empilhados */
     padding: 20px;
+    gap: 15px;
+    /* Espaçamento entre itens empilhados */
+    max-width: 450px;
+    /* Largura máxima do formulário no mobile */
   }
 
-  form .box {
+  .hero .hero-search-form .box {
     width: 100%;
-    align-items: flex-start;
+    /* Cada caixa ocupa a largura total */
+    min-width: unset;
+    /* Remove min-width desnecessário */
+    flex-basis: auto;
+    /* Reseta flex-basis */
   }
 
-  button.btn1 {
+  .hero .hero-search-form .btn1 {
     width: 100%;
-    padding: 14px;
+    padding: 12px;
+    /* Padding do botão no mobile */
+    font-size: 16px;
+    margin-top: 5px;
+    /* Ajusta a margem que foi adicionada no breakpoint anterior */
   }
 }

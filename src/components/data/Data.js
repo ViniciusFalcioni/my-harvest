@@ -5,11 +5,11 @@ export const nav = [
   },
   {
     text: "Arrendamento",
-    path: "/about",
+    path: "/about", // Observação: O path "/about" geralmente significa "Sobre". Se "Arrendamento" tiver sua própria página, talvez "/arrendamento" seja mais adequado.
   },
   {
-    text: "Maquinarios",
-    path: "/services",
+    text: "Maquinários", // Corrigido
+    path: "/services", // Observação: O path "/services" geralmente significa "Serviços". Se "Maquinários" tiver sua própria página, talvez "/maquinarios" seja mais adequado.
   },
   {
     text: "Meus Anúncios",
@@ -23,7 +23,80 @@ export const nav = [
     text: "Contato",
     path: "/contact",
   },
+];
+
+export const ads = [
+  {
+    id: 1,
+    category_id: 1,
+    title: "Trator John Deere 5055E",
+    price: "120000",
+    location: "São Paulo, SP",
+    description: "Trator John Deere 5055E em ótimo estado. Perfeito para grandes áreas agrícolas.",
+    brand: "John Deere",
+    model: "5055E",
+    year: "2020",
+    machineryDetails: { category: "Venda" },
+    landDetails: null,
+  },
+  {
+    id: 2,
+    category_id: 2,
+    title: "Fazenda de Soja - 300 hectares",
+    price: "5000000",
+    location: "Mato Grosso, MT",
+    description: "Excelente fazenda de soja com irrigação automática e solo argiloso.",
+    landDetails: { category: "Venda" },
+    machineryDetails: null,
+  },
+  {
+    id: 3,
+    category_id: 1,
+    title: "Colheitadeira S660",
+    price: "850000",
+    location: "Goiás, GO",
+    description: "Colheitadeira S660 em perfeito estado, ideal para colheita de grandes volumes.",
+    brand: "John Deere",
+    model: "S660",
+    year: "2018",
+    machineryDetails: { category: "Venda" },
+    landDetails: null,
+  },
+  {
+    id: 4,
+    category_id: 2,
+    title: "Sítio - 50 hectares",
+    price: "2000000",
+    location: "Minas Gerais, MG",
+    description: "Sítio bem localizado com plantação de café e infraestrutura completa.",
+    landDetails: { category: "Venda" },
+    machineryDetails: null,
+  },
+  {
+    id: 5,
+    category_id: 1,
+    title: "Plantadeira Massey Ferguson 5200",
+    price: "400000",
+    location: "Paraná, PR",
+    description: "Plantadeira Massey Ferguson 5200 em excelente estado para plantio de grandes áreas.",
+    brand: "Massey Ferguson",
+    model: "5200",
+    year: "2019",
+    machineryDetails: { category: "Venda" },
+    landDetails: null,
+  },
+  {
+    id: 6,
+    category_id: 2,
+    title: "Fazenda de Milho - 150 hectares",
+    price: "3500000",
+    location: "Bahia, BA",
+    description: "Fazenda de milho com sistema de irrigação eficiente e solo fértil.",
+    landDetails: { category: "Venda" },
+    machineryDetails: null,
+  },
 ]
+
 export const featured = [
   {
     cover: "../images/hero/h1.png",
@@ -251,78 +324,77 @@ export const location = [
 ]
 export const team = [
   {
-    list: "50",
-    cover: "../images/customer/team-1.jpg",
+    list: "50", // Poderia ser o número de corretores ou imóveis da imobiliária
+    cover: "../images/customer/team-1.jpg", // Idealmente, o logo da imobiliária ou foto da fachada
     address: "Ribeirão Preto, São Paulo, Brazil",
-    name: "João P. Silva",
+    name: "Vértice Imóveis RP", // Nome da Imobiliária
     icon: [
-      <i class='fa-brands fa-facebook-f'></i>,
-      <i class='fa-brands fa-linkedin'></i>,
-      <i class='fa-brands fa-twitter'></i>,
-      <i class='fa-brands fa-instagram'></i>
+      <i className='fa-brands fa-facebook-f'></i>,
+      <i className='fa-brands fa-linkedin'></i>,
+      <i className='fa-brands fa-twitter'></i>,
+      <i className='fa-brands fa-instagram'></i>
     ],
   },
   {
     list: "70",
     cover: "../images/customer/team-2.jpg",
     address: "Cuiabá, Mato Grosso, Brazil",
-    name: "Marina A. Santos",
+    name: "Nova Fronteira Imobiliária", // Nome da Imobiliária
     icon: [
-      <i class='fa-brands fa-facebook-f'></i>,
-      <i class='fa-brands fa-linkedin'></i>,
-      <i class='fa-brands fa-twitter'></i>,
-      <i class='fa-brands fa-instagram'></i>
+      <i className='fa-brands fa-facebook-f'></i>,
+      <i className='fa-brands fa-linkedin'></i>,
+      <i className='fa-brands fa-twitter'></i>,
+      <i className='fa-brands fa-instagram'></i>
     ],
   },
   {
     list: "80",
     cover: "../images/customer/team-3.jpg",
     address: "Palmas, Tocantins, Brazil",
-    name: "Carlos E. Almeida",
+    name: "Planalto Imóveis Palmas", // Nome da Imobiliária
     icon: [
-      <i class='fa-brands fa-facebook-f'></i>,
-      <i class='fa-brands fa-linkedin'></i>,
-      <i class='fa-brands fa-twitter'></i>,
-      <i class='fa-brands fa-instagram'></i>
+      <i className='fa-brands fa-facebook-f'></i>,
+      <i className='fa-brands fa-linkedin'></i>,
+      <i className='fa-brands fa-twitter'></i>,
+      <i className='fa-brands fa-instagram'></i>
     ],
   },
   {
     list: "51",
     cover: "../images/customer/team-4.jpg",
     address: "Goiânia, Goiás, Brazil",
-    name: "Fernanda M. Costa",
+    name: "Cerrado Imóveis GYN", // Nome da Imobiliária
     icon: [
-      <i class='fa-brands fa-facebook-f'></i>,
-      <i class='fa-brands fa-linkedin'></i>,
-      <i class='fa-brands fa-twitter'></i>,
-      <i class='fa-brands fa-instagram'></i>
+      <i className='fa-brands fa-facebook-f'></i>,
+      <i className='fa-brands fa-linkedin'></i>,
+      <i className='fa-brands fa-twitter'></i>,
+      <i className='fa-brands fa-instagram'></i>
     ],
   },
   {
     list: "42",
     cover: "../images/customer/team-5.jpg",
     address: "Uberlândia, Minas Gerais, Brazil",
-    name: "Pedro R. Oliveira",
+    name: "Triângulo Mineiro Imóveis", // Nome da Imobiliária
     icon: [
-      <i class='fa-brands fa-facebook-f'></i>,
-      <i class='fa-brands fa-linkedin'></i>,
-      <i class='fa-brands fa-twitter'></i>,
-      <i class='fa-brands fa-instagram'></i>
+      <i className='fa-brands fa-facebook-f'></i>,
+      <i className='fa-brands fa-linkedin'></i>,
+      <i className='fa-brands fa-twitter'></i>,
+      <i className='fa-brands fa-instagram'></i>
     ],
   },
   {
     list: "38",
     cover: "../images/customer/team-6.jpg",
     address: "Campo Grande, Mato Grosso do Sul, Brazil",
-    name: "Ana L. Ribeiro",
+    name: "Pantanal Negócios Imobiliários", // Nome da Imobiliária
     icon: [
-      <i class='fa-brands fa-facebook-f'></i>,
-      <i class='fa-brands fa-linkedin'></i>,
-      <i class='fa-brands fa-twitter'></i>,
-      <i class='fa-brands fa-instagram'></i>
+      <i className='fa-brands fa-facebook-f'></i>,
+      <i className='fa-brands fa-linkedin'></i>,
+      <i className='fa-brands fa-twitter'></i>,
+      <i className='fa-brands fa-instagram'></i>
     ],
   },
-
 ];
 export const price = [
   {
