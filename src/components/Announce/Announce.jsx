@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import img from "../images/pricing.jpg"; // Imagem para o componente Back
-import Back from "../common/Back"; // Seu componente de cabeçalho/banner
+import Back from "../UI/Back"; // Seu componente de cabeçalho/banner
 import SuccessPopup from "../Popups/SuccessPopup"; // Seu popup de sucesso
 import FailedPopup from "../Popups/FailedPopup";   // Seu popup de falha
 import "./Announce.css"; // O novo CSS que te enviei

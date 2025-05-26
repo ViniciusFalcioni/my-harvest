@@ -1,7 +1,7 @@
 import React from "react"
-import Back from "../common/Back"
-import RecentCard from "../home/recent/RecentCard"
-import "../home/recent/recent.css"
+import Back from "../UI/Back"
+import RecentCard from "../../features/home/components/RecentCard"
+import "../../features/home/components/recent.css"
 import img from "../images/about.jpg"
 
 const MeusAnuncios = () => {

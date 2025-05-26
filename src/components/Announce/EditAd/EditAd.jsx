@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 import img from "../../images/pricing.jpg";
-import Back from "../../common/Back";
+import Back from "../../UI/Back";
 import SuccessPopup from "../../Popups/SuccessPopup";
 import FailedPopup from "../../Popups/FailedPopup";
 import "../Announce.css";
@@ -90,7 +90,7 @@ const EditAd = () => {
       <section className="contact mb">
         <Back name="Editar Anúncio" title="Atualize as Informações do Anúncio" cover={img} />
         <div className="container">
-         
+
           {category !== "" && (
             <form className="shadow" onSubmit={handleSubmit}>
               <h4>Preencha as Informações</h4> <br />

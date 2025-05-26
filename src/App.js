@@ -1,5 +1,5 @@
 import "./App.css"
-import Pages from "./pages/Pages"
+import Pages from "./router/AppRouter"
 
 function App() {
   return <Pages />
