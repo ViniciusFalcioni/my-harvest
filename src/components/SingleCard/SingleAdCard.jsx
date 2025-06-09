@@ -53,7 +53,7 @@ const SingleAdCard = ({ ad }) => {
 
     return (
         <div className="box-card shadow">
-            <Link to={`/anuncio/${id}`} className="img-link"> {/* Renomeado para img-link para clareza */}
+            <Link to={`/anuncio/${id}`} className="img-link">
                 <img src={displayCoverImage} alt={title || "Anúncio"} />
             </Link>
             <div className="text-content"> {/* Renomeado para text-content */}

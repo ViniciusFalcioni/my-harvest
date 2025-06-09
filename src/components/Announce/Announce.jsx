@@ -1,283 +1,254 @@
 import React, { useState } from "react";
 import axios from "axios";
-import img from "../images/pricing.jpg"; // Imagem para o componente Back
-import Back from "../UI/Back"; // Seu componente de cabeçalho/banner
-import SuccessPopup from "../Popups/SuccessPopup"; // Seu popup de sucesso
-import FailedPopup from "../Popups/FailedPopup";   // Seu popup de falha
-import "./Announce.css"; // O novo CSS que te enviei
+import { v4 as uuidv4 } from 'uuid'; // Lembre-se de instalar: npm install uuid
+import img from "../images/pricing.jpg";
+import Back from "../UI/Back";
+import SuccessPopup from "../Popups/SuccessPopup";
+import FailedPopup from "../Popups/FailedPopup";
+import "./Announce.css";
 
 const Announce = () => {
-  // Estado para controlar qual categoria principal está selecionada (maquinário ou terra)
   const [selectedMainCategory, setSelectedMainCategory] = useState(""); // "machinery" ou "land"
-
   const [showSuccess, setShowSuccess] = useState(false);
   const [showFailed, setShowFailed] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  // Estado para os dados do formulário
+  // Estado para os dados do formulário, com nomes alinhados ao banco de dados
   const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    price: "",
-    location: "",
-    listing_type: "", // Novo campo para "Venda", "Alugar", "Arrendar"
-    machine_type: "",
-    brand: "",
-    model: "",
-    year: "",
-    land_size: "",
-    land_size_type: "",
-    soil_type: "",
-    irrigation: "",
-    // Adicione um campo para arquivos se for implementar o upload
-    // images: null,
+    // Dados Comuns (Tabela Anuncio)
+    titulo: "",
+    descricao: "",
+    preco: "",
+    localizacao: "",
+    tipoTransacao: "", // "Venda", "Alugar", "Arrendar"
+
+    // Dados Específicos (Maquinario)
+    tipoMaquinario: "",
+    marca: "",
+    modelo: "",
+    anoFabricacao: "",
+
+    // Dados Específicos (Terra)
+    areaHectares: "",
+    tipoTerra: "",
+    recursosNaturais: "", // Usaremos este campo para irrigação, etc.
   });
 
-  // Define a categoria principal e limpa campos específicos da outra categoria
   const handleMainCategorySelection = (mainCategory) => {
     setSelectedMainCategory(mainCategory);
-    // Limpa campos da categoria anterior e o tipo de listagem ao trocar de categoria principal
-    setFormData(prevFormData => ({
-      ...prevFormData, // Mantém os campos comuns
-      listing_type: "", // Reseta o tipo de listagem
-      // Limpa campos de maquinário se a nova categoria não for machinery
-      machine_type: mainCategory === "machinery" ? prevFormData.machine_type : "",
-      brand: mainCategory === "machinery" ? prevFormData.brand : "",
-      model: mainCategory === "machinery" ? prevFormData.model : "",
-      year: mainCategory === "machinery" ? prevFormData.year : "",
-      // Limpa campos de terra se a nova categoria não for land
-      land_size: mainCategory === "land" ? prevFormData.land_size : "",
-      land_size_type: mainCategory === "land" ? prevFormData.land_size_type : "",
-      soil_type: mainCategory === "land" ? prevFormData.soil_type : "",
-      irrigation: mainCategory === "land" ? prevFormData.irrigation : "",
+    // Limpa campos para evitar enviar dados da categoria errada
+    setFormData(prev => ({
+      ...prev,
+      tipoTransacao: "",
+      tipoMaquinario: "",
+      marca: "",
+      modelo: "",
+      anoFabricacao: "",
+      areaHectares: "",
+      tipoTerra: "",
+      recursosNaturais: "",
     }));
   };
 
-  // Mapeia a categoria principal para o ID numérico
-  const getCategoryID = () => {
-    if (selectedMainCategory === "machinery") return 1; // ID para Máquinas Agrícolas
-    if (selectedMainCategory === "land") return 2; // ID para Terras
-    return null;
-  };
-
-  // Manipulador genérico para a maioria dos campos de formulário
   const handleChange = (e) => {
-    const { name, value, type, files } = e.target;
-    if (type === "file") {
-      // Para o input de arquivo, você pegaria os arquivos aqui
-      // Por enquanto, não estamos adicionando ao formData para não quebrar a submissão atual
-      // setFormData({ ...formData, [name]: files });
-      console.log("Arquivos selecionados:", files); // Apenas para demonstração
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
-  // Reseta o formulário e a seleção de categoria principal
   const resetForm = () => {
     setFormData({
-      title: "",
-      description: "",
-      price: "",
-      location: "",
-      listing_type: "",
-      machine_type: "",
-      brand: "",
-      model: "",
-      year: "",
-      land_size: "",
-      land_size_type: "",
-      soil_type: "",
-      irrigation: "",
+      titulo: "",
+      descricao: "",
+      preco: "",
+      localizacao: "",
+      tipoTransacao: "",
+      tipoMaquinario: "",
+      marca: "",
+      modelo: "",
+      anoFabricacao: "",
+      areaHectares: "",
+      tipoTerra: "",
+      recursosNaturais: "",
     });
-    setSelectedMainCategory(""); // Reseta a categoria principal
+    setSelectedMainCategory("");
   };
 
-  // Manipulador para a submissão do formulário
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const categoryID = getCategoryID();
-    // Prepara os dados para enviar. Remova campos vazios específicos de categoria se desejar.
-    const dataToSend = {
-      title: formData.title,
-      description: formData.description,
-      price: formData.price,
-      location: formData.location,
-      category_id: categoryID, // ID da categoria principal (maquinário/terra)
-      listing_type: formData.listing_type, // Venda, Alugar, Arrendar
+    setErrorMessage("");
+
+    // 1. Monta o objeto de dados comuns
+    const commonData = {
+      idAnuncio: uuidv4(),
+      idUsuario: "user_placeholder_id", // IMPORTANTE: Substituir pelo ID do usuário logado
+      titulo: formData.titulo,
+      descricao: formData.descricao,
+      preco: parseFloat(formData.preco),
+      localizacao: formData.localizacao,
+      tipoTransacao: formData.tipoTransacao,
     };
 
+    // 2. Monta o objeto de dados específicos
+    let specificData = {};
     if (selectedMainCategory === "machinery") {
-      dataToSend.machine_type = formData.machine_type;
-      dataToSend.brand = formData.brand;
-      dataToSend.model = formData.model;
-      dataToSend.year = formData.year;
+      specificData = {
+        tipoMaquinario: formData.tipoMaquinario,
+        marca: formData.marca,
+        modelo: formData.modelo,
+        anoFabricacao: formData.anoFabricacao,
+      };
     } else if (selectedMainCategory === "land") {
-      dataToSend.land_size = formData.land_size;
-      dataToSend.land_size_type = formData.land_size_type;
-      dataToSend.soil_type = formData.soil_type;
-      dataToSend.irrigation = formData.irrigation;
+      specificData = {
+        areaHectares: parseFloat(formData.areaHectares),
+        tipoTerra: formData.tipoTerra,
+        recursosNaturais: formData.recursosNaturais,
+      };
     }
-    // NOTA: O upload de arquivos (formData.images) requer tratamento especial (geralmente FormData API)
-    // e não está incluído neste dataToSend simples.
+
+    // 3. Monta o payload final para a API
+    const dataToSend = {
+      category: selectedMainCategory,
+      commonData,
+      specificData,
+    };
 
     try {
-      const response = await axios.post("http://localhost:3001/api/advertisements", dataToSend);
+      // Corrigido para o endpoint que criamos
+      const response = await axios.post("http://localhost:3001/api/anuncios", dataToSend);
       console.log("Anúncio cadastrado com sucesso:", response.data);
       setShowSuccess(true);
       resetForm();
     } catch (error) {
-      console.error("Erro ao cadastrar anúncio:", error.response ? error.response.data : error.message);
+      const msg = error.response?.data?.message || "Erro desconhecido. Tente novamente.";
+      setErrorMessage(msg);
       setShowFailed(true);
+      console.error("Erro ao cadastrar anúncio:", error);
     }
   };
 
   return (
     <>
-      <section className="announce-page-section"> {/* Classe principal da seção */}
+      <section className="announce-page-section">
         <Back name="Cadastrar Anúncio" title="Escolha o Tipo de Anúncio" cover={img} />
         <div className="container">
-          {/* Seleção de Categoria Principal */}
+          {/* Bloco de seleção de categoria (seu código original, está ótimo) */}
           <div className="category-selector">
             <div
               className={`category-card ${selectedMainCategory === "machinery" ? "selected" : ""}`}
               onClick={() => handleMainCategorySelection("machinery")}
               style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/cadastro/cadastrar-maquina.jpg)` }}
-              tabIndex={0} // Para acessibilidade (foco com teclado)
-              onKeyPress={(e) => e.key === 'Enter' && handleMainCategorySelection("machinery")} // Para acessibilidade
+              tabIndex={0}
+              onKeyPress={(e) => e.key === 'Enter' && handleMainCategorySelection("machinery")}
             >
-              <div className="overlay">
-                <button className="category-button">Cadastrar Maquinário</button>
-              </div>
+              <div className="overlay"><button className="category-button">Cadastrar Maquinário</button></div>
             </div>
             <div
               className={`category-card ${selectedMainCategory === "land" ? "selected" : ""}`}
               onClick={() => handleMainCategorySelection("land")}
               style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/cadastro/cadastrar-terra.jpg)` }}
-              tabIndex={0} // Para acessibilidade
-              onKeyPress={(e) => e.key === 'Enter' && handleMainCategorySelection("land")} // Para acessibilidade
+              tabIndex={0}
+              onKeyPress={(e) => e.key === 'Enter' && handleMainCategorySelection("land")}
             >
-              <div className="overlay">
-                <button className="category-button">Cadastrar Terra</button>
-              </div>
+              <div className="overlay"><button className="category-button">Cadastrar Terra</button></div>
             </div>
           </div>
 
-          {/* Formulário de Cadastro (aparece após selecionar a categoria principal) */}
-          {selectedMainCategory !== "" && (
+          {/* Formulário de Cadastro */}
+          {selectedMainCategory && (
             <form className="announce-form shadow" onSubmit={handleSubmit}>
-              <h4>
-                Cadastrar {selectedMainCategory === "machinery" ? "Maquinário" : "Terra"}
-              </h4>
+              <h4>Cadastrar {selectedMainCategory === "machinery" ? "Maquinário" : "Terra"}</h4>
 
+              {/* Campos Comuns */}
               <div className="form-group">
-                <label htmlFor="title">Título do anúncio*</label>
-                <input type="text" id="title" name="title" placeholder="Ex: Trator John Deere 5078E em ótimo estado" required onChange={handleChange} value={formData.title} />
+                <label htmlFor="titulo">Título do anúncio*</label>
+                <input type="text" id="titulo" name="titulo" placeholder="Ex: Trator John Deere 5078E" required onChange={handleChange} value={formData.titulo} />
               </div>
-
               <div className="form-group">
-                <label htmlFor="description">Descrição detalhada*</label>
-                <textarea name="description" id="description" placeholder="Descreva os detalhes do seu item..." cols="30" rows="7" required onChange={handleChange} value={formData.description}></textarea>
+                <label htmlFor="descricao">Descrição detalhada*</label>
+                <textarea name="descricao" id="descricao" placeholder="Descreva os detalhes do seu item..." rows="7" required onChange={handleChange} value={formData.descricao}></textarea>
               </div>
-
               <div className="form-row">
                 <div className="form-group">
-                  <label htmlFor="price">Preço (R$)*</label>
-                  <input type="number" id="price" name="price" placeholder="Ex: 250000" required onChange={handleChange} value={formData.price} />
+                  <label htmlFor="preco">Preço (R$)*</label>
+                  <input type="number" id="preco" name="preco" placeholder="Ex: 250000" required onChange={handleChange} value={formData.preco} />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="location">Localização (Cidade, UF)*</label>
-                  <input type="text" id="location" name="location" placeholder="Ex: Ribeirão Preto, SP" required onChange={handleChange} value={formData.location} />
+                  <label htmlFor="localizacao">Localização (Cidade, UF)*</label>
+                  <input type="text" id="localizacao" name="localizacao" placeholder="Ex: Ribeirão Preto, SP" required onChange={handleChange} value={formData.localizacao} />
                 </div>
               </div>
 
-              {/* Campos específicos para Maquinário */}
+              {/* Campos Específicos para Maquinário */}
               {selectedMainCategory === "machinery" && (
                 <>
                   <div className="form-row">
                     <div className="form-group">
-                      <label htmlFor="machinery_listing_type">Tipo de Anúncio*</label>
-                      <select id="machinery_listing_type" name="listing_type" required onChange={handleChange} value={formData.listing_type}>
+                      <label htmlFor="tipoTransacao">Tipo de Anúncio*</label>
+                      <select name="tipoTransacao" required onChange={handleChange} value={formData.tipoTransacao}>
                         <option value="" disabled>Selecione...</option>
                         <option value="Venda">Venda</option>
-                        <option value="Alugar">Alugar</option>
+                        <option value="Aluguel">Aluguel</option>
                       </select>
                     </div>
                     <div className="form-group">
-                      <label htmlFor="machine_type">Tipo de Maquinário*</label>
-                      <input type="text" id="machine_type" name="machine_type" placeholder="Ex: Trator, Colheitadeira" required onChange={handleChange} value={formData.machine_type} />
+                      <label htmlFor="tipoMaquinario">Tipo de Maquinário*</label>
+                      <input type="text" id="tipoMaquinario" name="tipoMaquinario" placeholder="Ex: Trator, Colheitadeira" required onChange={handleChange} value={formData.tipoMaquinario} />
                     </div>
                   </div>
                   <div className="form-row">
                     <div className="form-group">
-                      <label htmlFor="brand">Marca*</label>
-                      <input type="text" id="brand" name="brand" placeholder="Ex: John Deere" required onChange={handleChange} value={formData.brand} />
+                      <label htmlFor="marca">Marca*</label>
+                      <input type="text" id="marca" name="marca" placeholder="Ex: John Deere" required onChange={handleChange} value={formData.marca} />
                     </div>
                     <div className="form-group">
-                      <label htmlFor="model">Modelo*</label>
-                      <input type="text" id="model" name="model" placeholder="Ex: 5078E" required onChange={handleChange} value={formData.model} />
+                      <label htmlFor="modelo">Modelo*</label>
+                      <input type="text" id="modelo" name="modelo" placeholder="Ex: 5078E" required onChange={handleChange} value={formData.modelo} />
                     </div>
                     <div className="form-group">
-                      <label htmlFor="year">Ano de Fabricação*</label>
-                      <input type="number" id="year" name="year" placeholder="Ex: 2020" min="1900" max={new Date().getFullYear() + 1} required onChange={handleChange} value={formData.year} />
+                      <label htmlFor="anoFabricacao">Ano de Fabricação*</label>
+                      <input type="number" id="anoFabricacao" name="anoFabricacao" placeholder="Ex: 2020" required onChange={handleChange} value={formData.anoFabricacao} />
                     </div>
                   </div>
                 </>
               )}
 
-              {/* Campos específicos para Terra */}
+              {/* Campos Específicos para Terra */}
               {selectedMainCategory === "land" && (
                 <>
                   <div className="form-row">
                     <div className="form-group">
-                      <label htmlFor="land_listing_type">Tipo de Anúncio*</label>
-                      <select id="land_listing_type" name="listing_type" required onChange={handleChange} value={formData.listing_type}>
+                      <label htmlFor="tipoTransacao">Tipo de Anúncio*</label>
+                      <select name="tipoTransacao" required onChange={handleChange} value={formData.tipoTransacao}>
                         <option value="" disabled>Selecione...</option>
                         <option value="Venda">Venda</option>
-                        <option value="Arrendar">Arrendar</option>
+                        <option value="Arrendamento">Arrendamento</option>
                       </select>
                     </div>
                     <div className="form-group">
-                      <label htmlFor="land_size">Tamanho da Terra*</label>
-                      <input type="number" id="land_size" name="land_size" placeholder="Ex: 100" required onChange={handleChange} value={formData.land_size} />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="land_size_type">Unidade de Medida*</label>
-                      <select id="land_size_type" name="land_size_type" required onChange={handleChange} value={formData.land_size_type}>
-                        <option value="" disabled>Selecione...</option>
-                        <option value="Hectares">Hectares</option>
-                        <option value="Alqueires">Alqueires</option>
-                        <option value="Acres">Acres</option>
-                      </select>
+                      <label htmlFor="areaHectares">Área (em Hectares)*</label>
+                      <input type="number" id="areaHectares" name="areaHectares" placeholder="Ex: 150" required onChange={handleChange} value={formData.areaHectares} />
                     </div>
                   </div>
                   <div className="form-row">
                     <div className="form-group">
-                      <label htmlFor="soil_type">Tipo de Solo (Opcional)</label>
-                      <input type="text" id="soil_type" name="soil_type" placeholder="Ex: Arenoso, Argiloso" onChange={handleChange} value={formData.soil_type} />
+                      <label htmlFor="tipoTerra">Tipo de Solo (Opcional)</label>
+                      <input type="text" id="tipoTerra" name="tipoTerra" placeholder="Ex: Arenoso, Argiloso" onChange={handleChange} value={formData.tipoTerra} />
                     </div>
                     <div className="form-group">
-                      <label htmlFor="irrigation">Detalhes de Irrigação (Opcional)</label>
-                      <input type="text" id="irrigation" name="irrigation" placeholder="Ex: Pivô Central, Gotejamento" onChange={handleChange} value={formData.irrigation} />
+                      <label htmlFor="recursosNaturais">Detalhes de Irrigação/Recursos (Opcional)</label>
+                      <input type="text" id="recursosNaturais" name="recursosNaturais" placeholder="Ex: Pivô Central, Gotejamento" onChange={handleChange} value={formData.recursosNaturais} />
                     </div>
                   </div>
                 </>
               )}
 
-              <div className="form-group">
-                <label htmlFor="images">Fotos do Anúncio (Opcional)</label>
-                <input type="file" id="images" name="images" multiple onChange={handleChange} accept="image/*" />
-                <small style={{ display: 'block', marginTop: '5px', color: '#777' }}>Selecione uma ou mais imagens. O upload real de arquivos não está implementado neste exemplo.</small>
-              </div>
-
-              <button type="submit" className="submit-button">
-                Cadastrar Anúncio de {selectedMainCategory === "machinery" ? "Maquinário" : "Terra"}
-              </button>
+              <button type="submit" className="submit-button">Cadastrar Anúncio</button>
             </form>
           )}
 
-          {/* Popups de Sucesso/Falha */}
+          {/* Popups */}
           {showSuccess && <SuccessPopup message="Anúncio cadastrado com sucesso!" onClose={() => setShowSuccess(false)} />}
-          {showFailed && <FailedPopup message="Erro ao cadastrar anúncio. Verifique os dados ou tente novamente." onClose={() => setShowFailed(false)} />}
+          {showFailed && <FailedPopup message={errorMessage} onClose={() => setShowFailed(false)} />}
         </div>
       </section>
     </>
